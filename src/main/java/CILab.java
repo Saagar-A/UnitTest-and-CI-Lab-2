@@ -13,7 +13,20 @@ public class CILab implements CILabInterface {
 
     @Override
     public boolean detectCapitalUse() {
-        return false;
+        final int length = getString().length();
+        if (length <= 1) {
+            return true;
+        }
+        final boolean isFirstLetterCapital = Character.isUpperCase(getString().charAt(0));
+        if (isFirstLetterCapital) {
+            if (Character.isUpperCase(getString().charAt(1))) {
+                return getString().chars().allMatch(Character::isUpperCase);
+            } else {
+                return getString().chars().skip(1).allMatch(Character::isLowerCase);
+            }
+        } else {
+            return getString().chars().allMatch(Character::isLowerCase);
+        }
     }
 
 }

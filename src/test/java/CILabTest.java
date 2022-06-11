@@ -42,6 +42,10 @@ public class CILabTest {
         assertFalse(myString.detectCapitalUse());
     }
 
-
+    @Test
+    public void detectCapitalUseTest5() {
+        myString.setString("To");
+        assertTrue(myString.detectCapitalUse());
+    }
 
 }
